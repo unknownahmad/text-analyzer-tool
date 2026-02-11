@@ -29,3 +29,19 @@ def get_top_words(text):
   
    sorted_words = sorted(pairs, key=get_count, reverse=True)
    return sorted_words[:5]
+
+def get_letter_counts(text):
+  
+   text = text.lower()
+  
+   letters = {}
+  
+   alphabet = "abcdefghijklmnopqrstuvwxyz"
+  
+   for char in text:
+       if char in alphabet:
+           if char in letters:
+               letters[char] = letters[char] + 1
+           else:
+               letters[char] = 1
+   return letters
