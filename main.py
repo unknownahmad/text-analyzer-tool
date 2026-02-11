@@ -15,7 +15,19 @@ def welcome():
     text_input = input("PASTE YOUR TEXT HERE:\n>> ")
     return text_input
 
+def menu():
+   print("\n\n⚙️  ANALYSIS MENU ⚙️")
+   print("-" * 28)
+   print("1. Top 5 Word Frequency")
+   print("2. Letter Frequency (A-Z)")
+   print("3. Sentence Count")
+   print("4. Exit")
 
+
+
+
+def main():
+   pass
 
 
 
