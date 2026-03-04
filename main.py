@@ -21,12 +21,13 @@ def welcome():
 
 
 def menu():
-   print("\n\n⚙️  ANALYSIS MENU ⚙️")
+   print("\n\nANALYSIS MENU")
    print("-" * 28)
    print("1. Top 5 Word Frequency")
    print("2. Letter Frequency (A-Z)")
    print("3. Sentence Count")
-   print("4. Exit")
+   print("4. Least 5 Words")
+   print("5. Exit")
 ## the manu of my programme to showcase the diffrent options 
 
 
@@ -74,11 +75,15 @@ def main():
                 print(f"'{sent_text.capitalize()}': {sent_count} times")
             
         elif choice == "4":
+          result = word.least_words(user_text)
+          print("\nLEAST 5 WORDS")
+          for item in result:
+            print(f"'{item[0]}': {item[1]}")
+
+        elif choice == "5":   
             print("Goodbye!")
-            break
-            
-        else:
-            print("Invalid choice, try again.")
+        break
+        
             
         input("\nPress Enter to continue...")
 ##main fuction that orchertrate the whole programme
