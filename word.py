@@ -1,3 +1,11 @@
+STOP_WORDS = [
+    "the", "and", "is", "of", "to", "a", "in", "it", "that", "or", 
+    "for", "on", "are", "this", "my", "be", "as", "which", "from",
+    "you", "why", "because", "we", "they", "he", "she", "with", 
+    "at", "by", "an", "not", "but", "what", "all", "were", "when", 
+    "how", "can", "your", "have", "has", "do", "will", "i", "so"
+]
+
 def get_top_words(text):
     clean_text = text.lower()
     punctuation = '.,!?:;"\'()[]-'
@@ -7,13 +15,9 @@ def get_top_words(text):
     
     words = clean_text.split()
     
-    stop_words = ["the", "and", "is", "of", "to", "a", "in", "it", 
-                  "that", "or", "for", "on", "are", "this", "my", "be", 
-                  "as", "which", "from"]
-    
     filtered_words = []
     for w in words:
-        if w not in stop_words:
+        if w not in STOP_WORDS:  
             filtered_words.append(w)
 
     counts = {}
@@ -31,7 +35,7 @@ def get_top_words(text):
     sorted_words = sorted(pairs, key=get_count, reverse=True)
     
     return sorted_words[:5]
-##tracks how many times each word showed up and return top 5
+
 
 def least_words(text):
     clean_text = text.lower()
@@ -42,13 +46,9 @@ def least_words(text):
     
     words = clean_text.split()
     
-    stop_words = ["the", "and", "is", "of", "to", "a", "in", "it", 
-                  "that", "or", "for", "on", "are", "this", "my", "be", 
-                  "as", "which", "from"]
-    
     filtered_words = []
     for w in words:
-        if w not in stop_words:
+        if w not in STOP_WORDS:  
             filtered_words.append(w)
 
     counts = {}
@@ -68,7 +68,6 @@ def least_words(text):
     return sorted_words[:5]
 
 
-
 def get_letter_counts(text):
     text = text.lower()
     letters = {}
@@ -84,5 +83,3 @@ def get_letter_counts(text):
     sorted_letters = sorted(letters.items())
     
     return sorted_letters
-
-##tracks how many times each letter was repeated
