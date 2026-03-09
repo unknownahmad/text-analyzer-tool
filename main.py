@@ -1,6 +1,6 @@
 import word
 import sentence
-import sentiment  # Pulling in our local NLP engine
+import sentiment  
 
 def welcome():
     # Setting up the initial landing screen so it feels like a real app
@@ -17,27 +17,24 @@ def welcome():
     print("3. Press ENTER.")
     print("")
 
-    # Grab the raw text from the user
     text_input = input("PASTE YOUR TEXT HERE:\n>> ")
     return text_input
 
 
 def menu():
-   # Keeps the terminal looking clean between operations
    print("\n\n⚙️  ANALYSIS MENU ⚙️")
    print("-" * 28)
    print("1. Top 5 Word Frequency")
    print("2. Letter Frequency (A-Z)")
    print("3. Sentence Count")
    print("4. Sentiment Analysis (Local NLP)")
-   print("5. Least 5 Word Frequency")  # Wired up your new function!
+   print("5. Least 5 Word Frequency")  
    print("6. Exit")
 
 
 def main():
     user_text = welcome()
     
-    # Quick safety check: don't let them crash the program by passing empty spaces
     if len(user_text.strip()) == 0:
         print("Error: No text entered. Please restart and paste valid text.")
         return
@@ -93,6 +90,7 @@ def main():
         # Pause the terminal so they can actually read the results before the menu redraws
         input("\nPress Enter to continue...")
 
-# Fire up the app
+
+
 if __name__ == "__main__":
     main()

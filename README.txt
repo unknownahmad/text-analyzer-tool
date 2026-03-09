@@ -1,17 +1,20 @@
 # 📊 Text Analyzer Pro
 
-A powerful and user-friendly Python application for comprehensive text analysis. Analyze word frequencies, letter distributions, and sentence patterns with ease!
+A comprehensive Python-based NLP tool designed to process unstructured text and extract meaningful data insights through a modern graphical desktop interface. 
 
-## 🚀 Features
+## 🚀 Key Features
 
-- **Top 5 Word Frequency**: Identifies the most frequently used words in your text (excluding common stop words)
-- **Letter Frequency Analysis**: Counts occurrences of each letter (A-Z) in your text
-- **Sentence Analysis**: 
-  - Counts total number of sentences
-  - Identifies the top 3 most frequent sentences
-- **Interactive Menu**: User-friendly console interface with clear options
-- **Smart Text Processing**: Handles punctuation and case-insensitive analysis
+- **🧠 Local NLP Sentiment Analysis**: Utilizes a local machine learning model to determine the emotional polarity (Positive, Negative, or Neutral) of any text without needing external APIs.
+- **📂 Document Parsing**: Seamlessly extract and analyze text directly from uploaded `.pdf` and `.docx` files.
+- **📈 Advanced Word Frequency**: Identifies both the top 5 most used words and the least frequent words while automatically filtering out "noise" (common stop words).
+- **📝 Sentence Analytics**: Tracks total sentence counts and identifies recurring sentence patterns.
+- **🖥️ Modern Dashboard**: Built with a sleek, dark-mode CustomTkinter interface for a high-quality user experience.
+- **🔤 Character Mapping**: Analyzes the distribution of every letter (A-Z) used in the text.
 
+## 🛠️ Technical Implementation
 
-
-
+- **Language**: Python 3
+- **GUI Framework**: CustomTkinter
+- **NLP Engine**: TextBlob (Local ML Model)
+- **Document Processing**: PyPDF, Python-docx
+- **Architecture**: Modular design with dedicated components for word, sentence, sentiment, and file processing.
