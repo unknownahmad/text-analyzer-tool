@@ -67,13 +67,11 @@ def main():
                 print(f"'{item[0].capitalize()}': {item[1]} times")
                 
         elif choice == "4":
-            # Fire up the NLP model to get the emotional polarity
             print("\n🧠 RUNNING NLP SENTIMENT ANALYSIS...")
             result = sentiment.analyze_sentiment(user_text)
             print(f"Result: {result}")
 
         elif choice == "5":
-            # Your brand new function!
             result = word.least_words(user_text)
             print("\nLEAST 5 WORDS")
             for item in result:

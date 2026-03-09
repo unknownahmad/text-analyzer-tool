@@ -1,2 +1,4 @@
 customtkinter
 textblob
+pypdf
+python-docx
