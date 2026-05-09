@@ -1,85 +1,34 @@
-STOP_WORDS = [
+import re
+from collections import Counter
+
+STOP_WORDS = {
     "the", "and", "is", "of", "to", "a", "in", "it", "that", "or", 
     "for", "on", "are", "this", "my", "be", "as", "which", "from",
     "you", "why", "because", "we", "they", "he", "she", "with", 
     "at", "by", "an", "not", "but", "what", "all", "were", "when", 
     "how", "can", "your", "have", "has", "do", "will", "i", "so"
-]
+}
 
-def get_top_words(text):
-    clean_text = text.lower()
-    punctuation = '.,!?:;"\'()[]-'
-    
-    for char in punctuation:
-        clean_text = clean_text.replace(char, " ")
-    
-    words = clean_text.split()
-    
-    filtered_words = []
-    for w in words:
-        if w not in STOP_WORDS:  
-            filtered_words.append(w)
+def clean_and_tokenize(text: str) -> list:
+    """Helper to clean punctuation and split text into lowercase words."""
+    return re.findall(r'\w+', text.lower())
 
-    counts = {}
-    for w in filtered_words:
-        if w in counts:
-            counts[w] = counts[w] + 1
-        else:
-            counts[w] = 1
-            
-    pairs = list(counts.items())
+def get_top_words(text: str, limit: int = 5) -> list:
+    """Returns the most frequent non-stop words."""
+    words = clean_and_tokenize(text)
+    filtered_words = [w for w in words if w not in STOP_WORDS]
     
-    def get_count(item):
-        return item[1]
-    
-    sorted_words = sorted(pairs, key=get_count, reverse=True)
-    
-    return sorted_words[:5]
+    return Counter(filtered_words).most_common(limit)
 
+def least_words(text: str, limit: int = 5) -> list:
+    """Returns the least frequent non-stop words."""
+    words = clean_and_tokenize(text)
+    filtered_words = [w for w in words if w not in STOP_WORDS]
+    
+    counts = Counter(filtered_words)
+    return sorted(counts.items(), key=lambda x: x[1])[:limit]
 
-def least_words(text):
-    clean_text = text.lower()
-    punctuation = '.,!?:;"\'()[]-'
-    
-    for char in punctuation:
-        clean_text = clean_text.replace(char, " ")
-    
-    words = clean_text.split()
-    
-    filtered_words = []
-    for w in words:
-        if w not in STOP_WORDS:  
-            filtered_words.append(w)
-
-    counts = {}
-    for w in filtered_words:
-        if w in counts:
-            counts[w] = counts[w] + 1
-        else:
-            counts[w] = 1
-            
-    pairs = list(counts.items())
-    
-    def get_count(item):
-        return item[1]
-    
-    sorted_words = sorted(pairs, key=get_count, reverse=False)
-    
-    return sorted_words[:5]
-
-
-def get_letter_counts(text):
-    text = text.lower()
-    letters = {}
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    
-    for char in text:
-        if char in alphabet:
-            if char in letters:
-                letters[char] = letters[char] + 1
-            else:
-                letters[char] = 1
-                
-    sorted_letters = sorted(letters.items())
-    
-    return sorted_letters
+def get_letter_counts(text: str) -> list:
+    """Returns alphabetically sorted letter frequencies."""
+    letters = [char for char in text.lower() if char.isalpha()]
+    return sorted(Counter(letters).items())
