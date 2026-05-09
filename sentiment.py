@@ -1,17 +1,23 @@
 from textblob import TextBlob
 
-def analyze_sentiment(text):
+def analyze_sentiment(text: str) -> str:
+    """Performs NLP analysis to determine polarity and subjectivity."""
     try:
         blob = TextBlob(text)
-        score = blob.sentiment.polarity
-        if score > 0.1:
+        polarity = blob.sentiment.polarity
+        subjectivity = blob.sentiment.subjectivity
+        
+        if polarity > 0.1:
             label = "Positive 🟢"
-        elif score < -0.1:
+        elif polarity < -0.1:
             label = "Negative 🔴"
         else:
             label = "Neutral ⚪"
             
-        return f"{label} (Polarity Score: {score:.2f})"
+        sub_label = "Objective (Fact-based)" if subjectivity < 0.5 else "Subjective (Opinion-based)"
+            
+        return (f"Sentiment: {label} ({polarity:.2f})\n"
+                f"Tone: {sub_label} ({subjectivity:.2f})")
         
     except Exception as e:
         return f"Analysis Error: {e}"
